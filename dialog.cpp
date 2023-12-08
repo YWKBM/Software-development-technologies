@@ -1,9 +1,10 @@
 #include "dialog.h"
 #include "ui_dialog.h"
-#include "../primeslist/primesgenerator.h"
 #include <QDebug>
-#include "../primeslist/PrimesGenerator.cpp"
+#include <QString>
+#include <libprimeslist.h>
 #include <vector>
+#include <QMessageBox>
 
 
 
@@ -16,10 +17,24 @@ Dialog::Dialog(QWidget *parent)
 }
 
 void Dialog::calculate(){
-    int a = ui->lineEdit_2->text().toInt();
-    int b = ui->lineEdit->text().toInt();
+    bool isAOK, isBOK;
 
-    std::vector<int> primes = primesGenerator->generatePrimes(a, b);
+
+    int a = ui->lineEdit_2->text().toInt(&isAOK);
+    int b = ui->lineEdit->text().toInt(&isBOK);
+
+    if(!isAOK) {
+    QMessageBox::critical(this, "Ошибка", "A должно быть целым числом");
+    return;
+    }
+    if(!isBOK) {
+    QMessageBox::critical(this, "Ошибка", "B должно быть целым числом");
+    return;
+    }
+
+
+    LibPrimeslist lb;
+    std::vector<int> primes = lb.GeneratePrimes(a, b);
 
     for (int prime : primes){
         ui->listWidget->addItem(QString::number(prime));

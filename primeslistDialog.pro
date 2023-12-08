@@ -10,12 +10,11 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    PrimesGenerator.cpp \
     dialog.cpp
 
 HEADERS += \
-    dialog.h \
-    primesgenerator.h \
+        dialog.h \
+
 FORMS += \
     dialog.ui
 
@@ -31,3 +30,42 @@ CONFIG(release, debug|release) { BUILDTYPE = release }
 CONFIG(debug, debug|release) { BUILDTYPE = debug }
 QMAKE_POST_LINK = windeployqt $$shell_quote($${OUT_PWD}/$${BUILDTYPE}/$${TARGET}.exe)
 
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/release/ -lLibPrimeslist
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/debug/ -lLibPrimeslist
+else:unix: LIBS += -L$$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/ -lLibPrimeslist
+
+INCLUDEPATH += $$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/debug
+DEPENDPATH += $$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/debug
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/release/libLibPrimeslist.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/debug/libLibPrimeslist.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/release/LibPrimeslist.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/debug/LibPrimeslist.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/libLibPrimeslist.a
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/release/ -lLibPrimeslist
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/debug/ -lLibPrimeslist
+else:unix: LIBS += -L$$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/ -lLibPrimeslist
+
+INCLUDEPATH += $$PWD/../../../Documents/LibPrimeslist
+DEPENDPATH += $$PWD/../../../Documents/LibPrimeslist
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/release/libLibPrimeslist.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/debug/libLibPrimeslist.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/release/LibPrimeslist.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/debug/LibPrimeslist.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/libLibPrimeslist.a
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/release/ -lLibPrimeslist
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/debug/ -lLibPrimeslist
+else:unix: LIBS += -L$$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/ -lLibPrimeslist
+
+INCLUDEPATH += $$PWD/../../../Documents/LibPrimeslist
+DEPENDPATH += $$PWD/../../../Documents/LibPrimeslist
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/release/libLibPrimeslist.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/debug/libLibPrimeslist.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/release/LibPrimeslist.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/debug/LibPrimeslist.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../../../Documents/build-LibPrimeslist-Desktop-Debug/libLibPrimeslist.a

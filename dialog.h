@@ -1,8 +1,6 @@
 #ifndef DIALOG_H
 #define DIALOG_H
-
 #include <QDialog>
-#include "../primeslist/primesgenerator.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Dialog; }
@@ -18,7 +16,6 @@ public slots:
 public:
     Dialog(QWidget *parent = nullptr);
     ~Dialog();
-    PrimesGenerator* primesGenerator;
 
 
 private:
